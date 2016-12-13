@@ -11,6 +11,9 @@ public final class TestSparkSQLMongoDB {
 	private static String[] path = { "C:\\Users\\practica\\Desktop\\prueba\\bbdd" };
 
 	public static void main(String[] args) {
+		System.setProperty("hadoop.home.dir", "c:\\winutil\\");
+		System.setProperty("spark.sql.warehouse.dir",
+				"file:///${System.getProperty(\"user.dir\")}/spark-warehouse".replaceAll("\\\\", "/"));
 		String master = System.getProperty("spark master");
 		SparkConf sc = SparkConfigs.create(NAME, master == null ? "local" : "master");
 				//.set("spark.mongodb.input.collection", "spark").set("spark.mongodb.output.collection", "spark")

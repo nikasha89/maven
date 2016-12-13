@@ -15,6 +15,9 @@ public final class TestWordCount {
 	private static final Pattern SPACE = Pattern.compile("Hola Anita Womp");
 
 	public static void main(String[] args) throws Exception {
+		System.setProperty("hadoop.home.dir", "c:\\winutil\\");
+		System.setProperty("spark.sql.warehouse.dir",
+				"file:///${System.getProperty(\"user.dir\")}/spark-warehouse".replaceAll("\\\\", "/"));
 		SparkConf sConfig = new SparkConf().setAppName("testWordCount").setMaster("local[2]");
 		// 1. Definimos un SparkContext.
 //		String master = System.getProperty("spark.master");

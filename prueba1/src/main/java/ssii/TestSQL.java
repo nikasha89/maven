@@ -10,6 +10,9 @@ public class TestSQL {
 	private static final String NAME = "TestSQL";
 
 	public static void main(String[] args) {
+		System.setProperty("hadoop.home.dir", "c:\\winutil\\");
+		System.setProperty("spark.sql.warehouse.dir",
+				"file:///${System.getProperty(\"user.dir\")}/spark-warehouse".replaceAll("\\\\", "/"));
 		// 1. Definir un SparkContext
 		String master = System.getProperty("spark.master");
 		JavaSparkContext ctx = new JavaSparkContext(SparkConfigs.create(NAME,
